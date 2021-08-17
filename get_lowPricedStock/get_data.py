@@ -14,9 +14,9 @@ def get_data(df):
         for data in tmp:
             tmp_columns.append(data[1])
         tmp_df.columns = tmp_columns
-        tmp_df.set_index('주요재무정보', drop=True, inplace=True)
-        print(tmp_df.loc['PER(배)', tmp_columns[4]])
-        
+        tmp_df.set_index("주요재무정보", drop=True, inplace=True)
+        print(tmp_df.loc["PER(배)", tmp_columns[4]])
+
     return df
 
 

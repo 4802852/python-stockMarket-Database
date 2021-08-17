@@ -20,17 +20,17 @@ def get_per_roe(df):
         #     df.loc[i, "per"] = float("inf")
         #     df.loc[i, "roe"] = -float("inf")
         try:
-            tmp_df = pd.read_html(req.text, match='최근 연간 실적')[0]
+            tmp_df = pd.read_html(req.text, match="최근 연간 실적")[0]
             tmp = list(tmp_df.columns)
             tmp_columns = []
             for data in tmp:
                 tmp_columns.append(data[1])
             tmp_df.columns = tmp_columns
-            tmp_df.set_index('주요재무정보', drop=True, inplace=True)
-            df.loc[i, "per"] = float(tmp_df.at['PER(배)', tmp_columns[3]].values[0])
-            df.loc[i, "roe"] = float(tmp_df.at['ROE(지배주주)', tmp_columns[3]].values[0])
+            tmp_df.set_index("주요재무정보", drop=True, inplace=True)
+            df.loc[i, "per"] = float(tmp_df.at["PER(배)", tmp_columns[3]].values[0])
+            df.loc[i, "roe"] = float(tmp_df.at["ROE(지배주주)", tmp_columns[3]].values[0])
             if df.loc[i, "per"] < 0:
-                df.loc[i, "per"] = float('inf')
+                df.loc[i, "per"] = float("inf")
         except:
             print("no information at {}".format(df.loc[i]["name"]))
             df.loc[i, "per"] = float("inf")
